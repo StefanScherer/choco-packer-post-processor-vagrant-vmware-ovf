@@ -28,6 +28,7 @@ $zip.Dispose()
 $env:PACKER_LOG="debug"
 $ErrorActionPreference = "SilentlyContinue"
 . packer version 2>version.txt
+Get-Content version.txt
 $ErrorActionPreference = "Stop"
 if (-Not (Select-String -Path version.txt -pattern "Discovered plugin: vagrant-vmware-ovf =").Length) {
   Write-Error "FAIL: Packer could not find the installed plugin!"
