@@ -2,36 +2,36 @@
 $ErrorActionPreference = "Stop"
 $version = $env:APPVEYOR_BUILD_VERSION -replace('\.[^.\\/]+$')
 
-"TEST: Version $version in docker-compose.nuspec file should match"
-[xml]$spec = Get-Content docker-compose.nuspec
+"TEST: Version $version in packer-post-processor-vagrant-vmware-ovf.nuspec file should match"
+[xml]$spec = Get-Content packer-post-processor-vagrant-vmware-ovf.nuspec
 if ($spec.package.metadata.version.CompareTo($version)) {
   Write-Error "FAIL: rong version in nuspec file!"
 }
 
 "TEST: Package should contain only install script"
 Add-Type -assembly "system.io.compression.filesystem"
-$zip = [IO.Compression.ZipFile]::OpenRead("$pwd\docker-compose.$version.nupkg")
+$zip = [IO.Compression.ZipFile]::OpenRead("$pwd\packer-post-processor-vagrant-vmware-ovf.$version.nupkg")
 if ($zip.Entries.Count -ne 5) {
   Write-Error "FAIL: Wrong count in nupkg!"
 }
 $zip.Dispose()
 
 "TEST: Installation of package should work"
-. choco install -y docker-compose -source .
+. choco install -y packer-post-processor-vagrant-vmware-ovf -source .
 
 "TEST: Version of binary should match"
-. docker-compose --version
-if (-Not $(docker-compose --version).Contains("version: $version")) {
-  Write-Error "FAIL: Wrong version of docker-compose installed!"
+. packer-post-processor-vagrant-vmware-ovf --version
+if (-Not $(packer-post-processor-vagrant-vmware-ovf --version).Contains("version: $version")) {
+  Write-Error "FAIL: Wrong version of packer-post-processor-vagrant-vmware-ovf installed!"
 }
 
 "TEST: Uninstall show remove the binary"
-. choco uninstall docker-compose
+. choco uninstall packer-post-processor-vagrant-vmware-ovf
 try {
-  . docker-compose
-  Write-Error "FAIL: docker-compose binary still found"
+  . packer-post-processor-vagrant-vmware-ovf
+  Write-Error "FAIL: packer-post-processor-vagrant-vmware-ovf binary still found"
 } catch {
-  Write-Host "PASS: docker-compose not found"
+  Write-Host "PASS: packer-post-processor-vagrant-vmware-ovf not found"
 }
 
 "TEST: Finished"
