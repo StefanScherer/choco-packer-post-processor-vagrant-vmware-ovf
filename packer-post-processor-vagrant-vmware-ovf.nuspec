@@ -19,5 +19,8 @@ This plugin is used to build the boxes available at https://vagrantcloud.com/gos
     <dependencies>
       <dependency id="packer" />
     </dependencies>
-    </metadata>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
 </package>

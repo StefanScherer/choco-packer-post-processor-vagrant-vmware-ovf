@@ -13,7 +13,7 @@ if ($spec.package.metadata.version.CompareTo($version)) {
 Add-Type -assembly "system.io.compression.filesystem"
 $zip = [IO.Compression.ZipFile]::OpenRead("$pwd\packer-post-processor-vagrant-vmware-ovf.$version.nupkg")
 Write-Host $zip.Entries.Count
-if ($zip.Entries.Count -ne 5) {
+if ($zip.Entries.Count -ne 6) {
   Write-Error "FAIL: Wrong count in nupkg!"
 }
 $zip.Dispose()
