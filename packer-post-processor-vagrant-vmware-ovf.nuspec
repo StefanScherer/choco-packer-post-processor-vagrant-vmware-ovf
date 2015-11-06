@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>packer-post-processor-vagrant-vmware-ovf</id>
+    <version>0.2.1.20150603</version>
+    <title>packer-post-processor-vagrant-vmware-ovf</title>
+    <authors>Fabio Rapposelli, Stefan Scherer</authors>
+    <owners>Stefan Scherer</owners>
+    <summary>This packer plugin leverages VMware OVF Tool to create a vagrant-vcloud and vagrant-vcenter compatible boxes.</summary>
+    <description>This packer plugin leverages VMware OVF Tool to create a vagrant-vcloud and vagrant-vcenter compatible boxes.
+
+This plugin is used to build the boxes available at https://vagrantcloud.com/gosddc you can find the packer templates at https://github.com/gosddc/packer-templates
+    </description>
+    <projectUrl>http://packer.io</projectUrl>
+    <tags>packer vagrant virtual machine VM VMware vCenter vCloud vCloud Air</tags>
+    <licenseUrl>https://github.com/mitchellh/packer/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <iconUrl>http://packer.io/assets/images/logo_nav-e332793d.png</iconUrl>
+    <dependencies>
+      <dependency id="packer" />
+    </dependencies>
+    </metadata>
+</package>
