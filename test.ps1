@@ -25,15 +25,15 @@ $zip.Dispose()
 . choco install -y packer-post-processor-vagrant-vmware-ovf -source .
 
 "TEST: Version of binary should match"
-. packer-post-processor-vagrant-vmware-ovf --version
-if (-Not $(packer-post-processor-vagrant-vmware-ovf --version).Contains("version: $version")) {
+. ${env:APPDATA}\packer.d\plugins\packer-post-processor-vagrant-vmware-ovf --version
+if (-Not $(${env:APPDATA}\packer.d\plugins\packer-post-processor-vagrant-vmware-ovf --version).Contains("version: $version")) {
   Write-Error "FAIL: Wrong version of packer-post-processor-vagrant-vmware-ovf installed!"
 }
 
 "TEST: Uninstall show remove the binary"
 . choco uninstall packer-post-processor-vagrant-vmware-ovf
 try {
-  . packer-post-processor-vagrant-vmware-ovf
+  . ${env:APPDATA}\packer.d\plugins\packer-post-processor-vagrant-vmware-ovf
   Write-Error "FAIL: packer-post-processor-vagrant-vmware-ovf binary still found"
 } catch {
   Write-Host "PASS: packer-post-processor-vagrant-vmware-ovf not found"
