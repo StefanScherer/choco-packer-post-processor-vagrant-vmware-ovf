@@ -11,7 +11,10 @@
 
 This plugin is used to build the boxes available at https://vagrantcloud.com/gosddc you can find the packer templates at https://github.com/gosddc/packer-templates
     </description>
-    <projectUrl>http://packer.io</projectUrl>
+    <projectUrl>https://github.com/frapposelli/packer-post-processor-vagrant-vmware-ovf</projectUrl>
+    <docsUrl>https://github.com/frapposelli/packer-post-processor-vagrant-vmware-ovf#usage</docsUrl>
+    <bugTrackerUrl>https://github.com/frapposelli/packer-post-processor-vagrant-vmware-ovf/issues</bugTrackerUrl>
+    <packageSourceUrl>https://github.com/StefanScherer/choco-packer-post-processor-vagrant-vmware-ovf</packageSourceUrl>
     <tags>packer vagrant virtual machine VM VMware vCenter vCloud vCloud Air</tags>
     <licenseUrl>https://github.com/mitchellh/packer/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
