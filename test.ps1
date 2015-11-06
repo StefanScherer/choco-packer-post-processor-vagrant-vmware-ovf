@@ -29,7 +29,6 @@ $env:PACKER_LOG="debug"
 $ErrorActionPreference = ""
 $(packer version 2>&1) | Out-File version.txt
 $ErrorActionPreference = "Stop"
-Get-Content version.txt
 if (-Not (Select-String -Path version.txt -pattern "Discovered plugin: vagrant-vmware-ovf =").Length) {
   Write-Error "FAIL: Packer could not find the installed plugin!"
 }
