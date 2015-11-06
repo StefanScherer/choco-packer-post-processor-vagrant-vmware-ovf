@@ -4,8 +4,9 @@ $version = $env:APPVEYOR_BUILD_VERSION -replace('\.[^.\\/]+$')
 
 "TEST: Version $version in packer-post-processor-vagrant-vmware-ovf.nuspec file should match"
 [xml]$spec = Get-Content packer-post-processor-vagrant-vmware-ovf.nuspec
+Write-Host $spec.package.metadata.version
 if ($spec.package.metadata.version.CompareTo($version)) {
-  Write-Error "FAIL: rong version in nuspec file!"
+  Write-Error "FAIL: Wrong version in nuspec file!"
 }
 
 "TEST: Package should contain only install script"
