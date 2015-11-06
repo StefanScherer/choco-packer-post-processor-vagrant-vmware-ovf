@@ -24,19 +24,18 @@ $zip.Dispose()
 "TEST: Installation of package should work"
 . choco install -y packer-post-processor-vagrant-vmware-ovf -source .
 
-"TEST: Version of binary should match"
+"TEST: Packer should find the plugin"
+$env:PACKER_LOG="debug"
+. packer version
 . ${env:APPDATA}\packer.d\plugins\packer-post-processor-vagrant-vmware-ovf --version
-if (-Not $(${env:APPDATA}\packer.d\plugins\packer-post-processor-vagrant-vmware-ovf --version).Contains("version: $version")) {
-  Write-Error "FAIL: Wrong version of packer-post-processor-vagrant-vmware-ovf installed!"
+if (-Not $(packer version).Contains("Discovered plugin: vagrant-vmware-ovf =")) {
+  Write-Error "FAIL: Packer could not find the installed plugin!"
 }
 
 "TEST: Uninstall show remove the binary"
 . choco uninstall packer-post-processor-vagrant-vmware-ovf
-try {
-  . ${env:APPDATA}\packer.d\plugins\packer-post-processor-vagrant-vmware-ovf
-  Write-Error "FAIL: packer-post-processor-vagrant-vmware-ovf binary still found"
-} catch {
-  Write-Host "PASS: packer-post-processor-vagrant-vmware-ovf not found"
+if ($(packer version).Contains("Discovered plugin: vagrant-vmware-ovf =")) {
+  Write-Error "FAIL: Packer still can find the installed plugin!"
 }
 
 "TEST: Finished"
