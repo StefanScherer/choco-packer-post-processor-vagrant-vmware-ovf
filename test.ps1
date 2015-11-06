@@ -26,7 +26,6 @@ $zip.Dispose()
 
 "TEST: Packer should find the plugin"
 $env:PACKER_LOG="debug"
-. packer version 2>version.txt
 if (-Not (Select-String -Path version.txt -pattern "Discovered plugin: vagrant-vmware-ovf =").Length) {
   Write-Error "FAIL: Packer could not find the installed plugin!"
 }
